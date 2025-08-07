@@ -2,7 +2,7 @@
 
 Uma aplicação web completa para calcular a hora noturna reduzida (NotRed) com base nas leis da CLT. A ferramenta é flexível, permitindo o cálculo por jornada de trabalho (início e fim) e também por um total de horas mensais, com um período noturno configurável.
 
-![Screenshot da Aplicação](https://i.imgur.com/gK2T3i2.png)
+![Screenshot da Aplicação](assets/img/exemplo.webp)
 
 ---
 
