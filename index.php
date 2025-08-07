@@ -1,15 +1,48 @@
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"]."/inc/versao.php";
 $base = "/Secullum/calculadora-noturno-reduzido";
+
+// Lógica para gerar as URLs dinamicamente
+$protocolo = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https' : 'http';
+$host = $_SERVER['HTTP_HOST'];
+$url_base_site = $protocolo . '://' . $host;
+
+// Constrói a URL absoluta para a imagem de compartilhamento
+$url_imagem_social = $url_base_site . $base . '/assets/img/logo-social-share.webp';
+
+// Gera a URL canônica da página atual
+$url_canonica = $url_base_site . $_SERVER['REQUEST_URI'];
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    
+    <title>Calculadora de Hora Noturna Reduzida</title>
+
+    <meta name="description" content="Calcule facilmente a hora noturna reduzida (NotRed) com base na CLT. Ferramenta para cálculo por jornada de trabalho ou total de horas mensais.">
+    <meta name="keywords" content="calculadora, adicional noturno, hora noturna, hora reduzida, clt, cálculo trabalhista, rh">
+    <meta name="author" content="Douglas Silva">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Jornada Noturna</title>
+    <link rel="canonical" href="<?= htmlspecialchars($url_canonica) ?>">
+
+    <link rel="icon" type="image/webp" sizes="32x32" href="<?= versao($base . '/assets/img/logo-social-share.webp') ?>">
+
+    <meta property="og:title" content="Calculadora de Hora Noturna Reduzida">
+    <meta property="og:description" content="Calcule facilmente a hora noturna reduzida (NotRed) com base na CLT.">
+    <meta property="og:url" content="<?= htmlspecialchars($url_canonica) ?>">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="<?= htmlspecialchars($url_imagem_social) ?>">
+    <meta property="og:image:width" content="1200"> <meta property="og:image:height" content="630"> <meta property="og:site_name" content="Calculadora de Hora Noturna">
+    <meta property="og:locale" content="pt_BR">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Calculadora de Hora Noturna Reduzida">
+    <meta name="twitter:description" content="Calcule facilmente a hora noturna (NotRed) com base na CLT.">
+    <meta name="twitter:image" content="<?= htmlspecialchars($url_imagem_social) ?>">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" href="<?= versao("$base/assets/css/style.css") ?>">
+    <link rel="stylesheet" href="<?= versao($base . '/assets/css/style.css') ?>">
 </head>
 <body>
     <main class="container">
@@ -117,7 +150,7 @@ $base = "/Secullum/calculadora-noturno-reduzido";
     <script>
         const basePath = '<?= $base ?>';
     </script>
-    <script src="<?= versao("$base/assets/js/script.js") ?>"></script>
+    <script src="<?= versao($base."/assets/js/script.js") ?>"></script>
     
     <footer class="footer">
       <p>Desenvolvido por <a href="https://www.linkedin.com/in/dougllassillva27/" target="_blank" rel="noopener">Douglas Silva</a></p>
